@@ -6,9 +6,9 @@
 
 **If this is useful, please star the repo. It is the one thing that helps other people find it.**
 
-![The whole vault as one living map](docs/atlas-whole-map.png)
+![The whole vault: 98,853 documents, 294,705 links, one living map](docs/organic-1-whole-vault-98853-docs.jpg)
 
-*Your whole vault as one living map. Each dot is a real note, each line a real link. (A fictional demo vault of 3,169 notes.)*
+*The whole vault: 98,853 documents, 294,705 links, one living map. Screenshots are from the Stinger Industries team vault, running the same atlas.*
 
 ## What you get
 
@@ -20,13 +20,30 @@
 - **A door for AI.** Any AI that speaks MCP can search and read your vault. See "Bring your own AI".
 - **Local-first.** Your notes stay on your machine. No account and no cloud service.
 
-| Search across every word | Read the original, human page or source |
-|---|---|
-| ![Ctrl+K search](docs/search-ctrl-k.png) | ![Document lens](docs/search-document-lens.png) |
+## Zoom all the way in, and back out
 
-![Follow the links from any note](docs/atlas-note-links.png)
+![Zoom in: clusters become programs, files and ideas](docs/organic-2-zoom-in-clusters.jpg)
+*Zoom in: clusters become programs, files and ideas.*
 
-*Select a note and its real links light up.*
+![Zoom further: every line is a real link](docs/organic-3-zoom-in-dense-links.jpg)
+*Zoom further: every line is a real link between two notes.*
+
+![All the way in: single notes, functions and tests](docs/organic-4-zoom-max-single-notes.jpg)
+*All the way in: single notes, functions and tests.*
+
+![And back out](docs/organic-5-zoom-back-out.jpg)
+*And back out, no reload.*
+
+![Drag nodes to stretch a cluster apart](docs/organic-6-stretched-nodes.jpg)
+*Drag nodes to stretch a cluster apart.*
+
+## Search everything
+
+![Ctrl+K searches every word of every note](docs/search-1-ctrl-k-whole-vault-pool-chemistry.jpg)
+*Ctrl+K searches every word of every note.*
+
+![Sidebar search plus the Document Lens](docs/search-2-sidebar-search-with-document-lens.jpg)
+*Sidebar search plus the Document Lens: read the original file without leaving the map.*
 
 ## Install and run (3 commands)
 
