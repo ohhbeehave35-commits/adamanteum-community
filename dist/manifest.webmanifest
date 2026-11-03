@@ -1,0 +1,25 @@
+{
+  "name": "Adamanteum",
+  "short_name": "Adamanteum",
+  "description": "A local knowledge atlas for your Markdown vault.",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "launch_handler": {"client_mode": ["focus-existing", "auto"]},
+  "background_color": "#100e18",
+  "theme_color": "#100e18",
+  "icons": [
+    {
+      "src": "/assets/adamanteum-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/adamanteum-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

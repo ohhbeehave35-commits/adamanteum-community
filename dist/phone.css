@@ -1,0 +1,172 @@
+/* Phone layout at 390 px. Existing workspace CSS is unchanged; this file only stacks panels. */
+@media (max-width: 390px) {
+ html, body { overflow-x: hidden; max-width: 100%; }
+ header,
+ .library,
+ .inspector,
+ .workspace-content,
+ #document,
+ #results,
+ #spot-results,
+ .notebook-layout {
+  padding-left: 16px;
+  padding-right: 16px;
+ }
+ header { padding-left: 16px; padding-right: 16px; }
+ button,
+ nav button,
+ .result,
+ .group,
+ .spot-result,
+ .places button,
+ #quick-open,
+ .notebook-layout button,
+ .notebook-layout input,
+ .notebook-layout textarea,
+ .notebook-layout select,
+ .workspace-switcher button,
+ #search,
+ #spot-query {
+  min-height: 44px;
+  min-width: 44px;
+ }
+ main,
+ body[data-theme=nebula] main,
+ body[data-theme=ember] main,
+ body[data-theme=aurora] main,
+ body[data-theme=ivory] main,
+ body[data-theme=terminal] main {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: none;
+  height: auto;
+  min-width: 0;
+  overflow-x: hidden;
+ }
+ .library,
+ .atlas,
+ .inspector,
+ body[data-theme=nebula] .library,
+ body[data-theme=nebula] .atlas,
+ body[data-theme=nebula] .inspector,
+ body[data-theme=ember] .library,
+ body[data-theme=ember] .atlas,
+ body[data-theme=ember] .inspector,
+ body[data-theme=aurora] .library,
+ body[data-theme=aurora] .atlas,
+ body[data-theme=aurora] .inspector,
+ body[data-theme=ivory] .library,
+ body[data-theme=ivory] .atlas,
+ body[data-theme=ivory] .inspector,
+ body[data-theme=terminal] .library,
+ body[data-theme=terminal] .atlas,
+ body[data-theme=terminal] .inspector {
+  grid-column: auto;
+  grid-row: auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+ }
+ #document,
+ #results,
+ #spot-results,
+ .result,
+ .notebook-dialog,
+ .notebook-layout {
+  max-width: 100%;
+  overflow-x: hidden;
+ }
+ .notebook-layout,
+ .notebook-dialog .notebook-layout,
+ body[data-theme=nebula] .notebook-layout,
+ body[data-theme=ember] .notebook-layout,
+ body[data-theme=aurora] .notebook-layout,
+ body[data-theme=ivory] .notebook-layout,
+ body[data-theme=terminal] .notebook-layout {
+  display: flex;
+  flex-direction: column;
+ }
+}
+
+/* Adamanteum: compact Atlas controls and clear map corners. */
+#atlas-tool-group{margin:8px 0 18px;border:1px solid var(--line);border-radius:8px;padding:8px}
+#atlas-tool-group summary{cursor:pointer;font-size:17.34px;font-weight:650;letter-spacing:1px}
+#atlas-tool-grid.atlas-tools{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;overflow:visible;gap:5px;margin-top:8px;padding:0}
+#atlas-tool-grid.atlas-tools button{display:block;min-width:0;width:100%;height:40px;min-height:40px;padding:5px;font-size:17.34px;white-space:normal;text-align:center}
+body .atlas .atlas-heading{top:10px;left:12px;right:12px;display:flex;align-items:center;gap:5px;max-width:calc(100% - 24px);height:22px;white-space:nowrap;font-size:17.34px;letter-spacing:.4px;z-index:5}
+body .atlas .atlas-heading .eyebrow{display:inline;font-size:17.34px;letter-spacing:1px;text-transform:uppercase;flex:none}
+#graph-info{overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
+.atlas-help{pointer-events:auto;flex:none;padding:0;width:20px;height:20px;border-radius:50%;font-size:17.34px}
+body .atlas .graph-top{top:40px;right:12px;left:auto;display:flex;align-items:center;gap:6px;max-width:calc(100% - 24px)}
+body .atlas .graph-top button,body .atlas .graph-top select{position:static;min-width:0;height:30px;padding:0 8px;font-size:17.34px}
+body .atlas .graph-panel{top:78px;max-height:calc(100% - 126px)}
+body .atlas .lapse-bar{left:12px;bottom:calc(var(--atlas-dock-clearance,72px) + 8px);transform:none;width:198px;max-width:calc(100% - 24px);padding:3px;gap:6px;box-shadow:none;border-radius:8px}
+body .atlas .lapse-bar input{width:160px;max-width:160px;min-width:0;flex:1 1 160px;height:16px}
+body .atlas .lapse-bar button{flex:none;width:26px;height:26px;padding:0}
+body .atlas .lapse-stamp{position:absolute;bottom:34px;left:0;font-size:17.34px;color:var(--muted);white-space:nowrap;max-width:calc(100vw - 30px);overflow:hidden;text-overflow:ellipsis;pointer-events:none}
+body .atlas #legend{bottom:70px;left:12px;max-width:calc(100% - 24px)}
+body.graph-focus .library{display:block!important;grid-column:1;grid-row:1}
+body.graph-focus main{display:grid!important;grid-template-columns:220px minmax(0,1fr)}
+body.graph-focus .atlas{grid-column:2;grid-row:1}
+@media(max-width:780px){body.graph-focus main{grid-template-columns:1fr;grid-template-rows:65% 35%}body.graph-focus .atlas{grid-column:1;grid-row:1}body.graph-focus .library{grid-column:1;grid-row:2}#atlas-tool-grid.atlas-tools{grid-template-columns:repeat(2,minmax(0,1fr))}body .atlas .graph-top select{max-width:180px}}
+
+/* Keep replay and map labels clear of the fixed workspace dock. */
+body .atlas{--atlas-bottom-padding:120px;--atlas-dock-clearance:72px;box-sizing:border-box;padding-bottom:var(--atlas-bottom-padding);min-height:360px}
+body .atlas>canvas{position:absolute;inset:0;width:100%;height:100%}
+#atlas-tool-grid .atlas-zoom-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+#atlas-tool-grid .atlas-action-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+#atlas-tool-grid .atlas-reset-row{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr)}
+body .atlas .atlas-heading{display:grid;grid-template-columns:max-content max-content minmax(0,1fr) 24px;height:auto;min-height:24px;white-space:normal;align-items:center}
+body .atlas .atlas-help{grid-column:4;grid-row:1;min-width:20px;min-height:20px}
+body .atlas #graph-info{min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:16px}
+body .atlas .graph-top{top:64px}
+body .atlas .graph-panel{top:100px}
+body .atlas #legend{bottom:calc(var(--atlas-dock-clearance,72px) + 64px)}
+@media(max-width:599px){body .atlas .atlas-heading{grid-template-columns:max-content minmax(0,1fr) 24px;grid-template-rows:20px auto;row-gap:0}body .atlas .atlas-heading>span[aria-hidden]{display:none}body .atlas #graph-info{grid-column:1/3;grid-row:2}body .atlas .atlas-help{grid-column:3;grid-row:1/3}body .atlas .graph-top{top:64px;left:12px;right:12px}body .atlas .graph-top select{flex:1;max-width:none}body .atlas .lapse-bar button{min-width:26px;min-height:26px}}
+
+/* Phone replay owns the row below the 64px + 30px graph controls. */
+@media(max-width:600px){
+ body .atlas .lapse-bar{top:102px;bottom:auto;left:12px;right:auto;width:calc(100% - 24px);max-width:260px;transform:none}
+ body .atlas .lapse-stamp{position:static;top:auto;bottom:auto;left:auto;flex:1;min-width:0;max-width:none}
+}
+
+/* Desktop title and controls share the same 30px row, 10px from the map edge. */
+body .atlas{container-type:inline-size}
+@media(min-width:601px){
+ body .atlas .atlas-heading{top:10px;right:420px;min-height:30px;height:30px;white-space:nowrap}
+ body .atlas #graph-info{white-space:nowrap}
+ body .atlas .graph-top{top:10px;right:12px;left:auto;height:30px;align-items:center}
+ body .atlas .graph-panel{top:48px}
+}
+/* A narrow map, even within a desktop window, needs separate header rows. */
+@container(max-width:940px){
+ body .atlas .atlas-heading{top:10px;right:12px;height:auto;min-height:24px;grid-template-columns:max-content minmax(0,1fr) 24px;grid-template-rows:20px auto;row-gap:0}
+ body .atlas .atlas-heading>span[aria-hidden]{display:none}
+ body .atlas #graph-info{grid-column:1/3;grid-row:2;white-space:normal}
+ body .atlas .atlas-help{grid-column:3;grid-row:1/3}
+ body .atlas .graph-top{top:64px;left:12px;right:12px}
+ body .atlas .graph-panel{top:100px}
+}
+
+/* Phone: search and the live map lead; library tools follow in reading order. */
+@media(max-width:640px){
+ body[data-theme]{height:auto;min-height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+ body[data-theme] header{order:2;height:auto;min-height:90px;padding:16px;gap:12px}
+ body[data-theme] header nav{flex-wrap:wrap;justify-content:center}
+ body[data-theme] main,body.graph-focus main{order:1;display:flex!important;flex-direction:column;height:auto;overflow:visible;min-width:0}
+ body[data-theme] .library,body.graph-focus .library{display:contents!important}
+ body[data-theme] .library>*{margin-left:16px;margin-right:16px;max-width:calc(100% - 32px)}
+ body[data-theme] .library>.search{order:-2;margin-top:72px;margin-bottom:12px;min-height:52px}
+ body[data-theme] .atlas{order:-1;flex:none;width:100%;height:60vh;min-height:60vh;grid-column:auto;grid-row:auto}
+ body[data-theme] .inspector{width:100%;max-height:none;overflow:visible}
+ body[data-theme] #scope{width:calc(100% - 32px)}
+ body[data-theme] .workspace-switcher{position:static;order:3;transform:none;margin:16px;max-width:calc(100% - 32px)}
+ body[data-theme] .atlas-heading,body[data-theme] .atlas-heading .eyebrow,body[data-theme] .atlas-help,
+ body[data-theme] .atlas .graph-top button,body[data-theme] .atlas .graph-top select,
+ body[data-theme] .atlas .lapse-stamp,body[data-theme] #atlas-tool-group summary,
+ body[data-theme] #atlas-tool-grid.atlas-tools button{font-size:17.34px;line-height:1.25}
+ body[data-theme] .atlas .graph-top{top:72px}
+ body[data-theme] .atlas .lapse-bar{top:116px;bottom:auto}
+}

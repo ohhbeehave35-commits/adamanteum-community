@@ -1,0 +1,59 @@
+{
+  "name": "adamanteum",
+  "version": "1.0.0",
+  "description": "Local organic knowledge atlas, search, notebook, code graphs and exports.",
+  "files": [
+    "*.mjs",
+    "python-extractor.py",
+    "dist/",
+    "assets/",
+    "samples/",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "SECURITY.md",
+    "Start-Adamanteum.ps1",
+    "Launch Adamanteum.cmd",
+    "tests/",
+    "verify/",
+    "docs/",
+    "CHANGELOG.md"
+  ],
+  "type": "module",
+  "bin": {
+    "adamanteum": "./adamanteum-cli.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --max-old-space-size=3072 server.mjs",
+    "graph": "node adamanteum-cli.mjs",
+    "test": "node --test --test-concurrency=2 tests/atlas-look.test.mjs tests/atlas-performance.test.mjs tests/cell.test.mjs tests/cli.test.mjs tests/code-extractor.test.mjs tests/flow.test.mjs tests/graph-export.test.mjs tests/graph-notes.test.mjs tests/graph-operations.test.mjs tests/graph-switches.test.mjs tests/layout-worker.test.mjs tests/lib.test.mjs tests/multilang.test.mjs tests/notebook.test.mjs tests/physics.test.mjs tests/project-navigation.test.mjs tests/python-resolution.test.mjs tests/query-pool.test.mjs tests/symbol-resolution.test.mjs tests/vault-indexer.test.mjs tests/community.test.mjs",
+    "test:core": "node verify/test-core.mjs"
+  },
+  "dependencies": {
+    "@babel/parser": "8.0.7",
+    "@babel/traverse": "8.0.7",
+    "tree-sitter-wasms": "0.1.13",
+    "web-tree-sitter": "0.25.10"
+  },
+  "license": "MIT",
+  "homepage": "https://stingerindustriesai.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohhbeehave35-commits/adamanteum-community.git"
+  },
+  "keywords": [
+    "obsidian-alternative",
+    "knowledge-graph",
+    "second-brain",
+    "markdown",
+    "local-first",
+    "mcp",
+    "mcp-server",
+    "code-graph",
+    "pkm",
+    "notes"
+  ]
+}
