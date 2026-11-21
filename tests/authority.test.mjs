@@ -95,6 +95,7 @@ test('18 door hits omit hidden notes and replace finished bodies',()=>{
 });
 test('19 paste starts with tested sentence and names memory setting',()=>{
  const paste=fs.readFileSync(path.join(repo,'templates/USER-LEVEL-PASTE.txt'),'utf8');
- assert.ok(paste.startsWith(sentence+'\n'));
- assert.ok(paste.split('\n').includes('Set autoMemoryEnabled to false in the project .claude/settings.json, or export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1. Auto memory is on by default in a local Claude Code session.'));
+ const lines=paste.split(/\r?\n/);
+ assert.equal(lines[0],sentence);
+ assert.ok(lines.includes('Set autoMemoryEnabled to false in the project .claude/settings.json, or export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1. Auto memory is on by default in a local Claude Code session.'));
 });
