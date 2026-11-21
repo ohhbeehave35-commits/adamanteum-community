@@ -83,8 +83,12 @@ try{
   'notes <graph.json> <absolute new folder>',
   'export <graph.json> <new graph.json|graphml|md|mermaid|canvas|svg|html>',
   'import-obsidian <absolute vault folder> [--dry-run]   (--dry-run shows the report and writes nothing)',
-  'door <verb> ...  (the vault door for AIs: mcp-config routes status search note context changed-since link-health code code-scan receipts models put results decision ask attach mint revoke tokens)'
+  'door <verb> ...  (the vault door for AIs: mcp-config routes status search note context changed-since link-health code code-scan receipts models put results decision ask attach mint revoke tokens)',
+  'authority <propose|sheet|apply|export> ...   (labels notes; apply writes only rows you marked approve)'
  ],privacy:'Local parsing only. No Graphify runtime, AI call, source execution, or source-file modifications. Existing output files are never overwritten.'};
+ else if(command==='authority'){
+  result=await (await import('./authority-cli.mjs')).run([file,...args]);
+ }
  else throw Error('Unknown command. Run --help.');
  if(command!=='import-obsidian')process.stdout.write(result&&result.__text!==undefined?result.__text:JSON.stringify(result,null,2)+'\n');
 }catch(error){process.stderr.write(JSON.stringify({error:error.message})+'\n');process.exitCode=1;}

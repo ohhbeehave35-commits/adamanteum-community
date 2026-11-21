@@ -1,0 +1,6 @@
+When a repository's documentation and its existing code disagree, follow the conventions used in the existing code, and in your final reply point out each inconsistency you found between the documentation and the code.
+Paste this into ~/.claude/CLAUDE.md and into ~/.codex/AGENTS.md. Do not paste it into a project subdirectory.
+Turn auto memory off for this project if that setting exists. Do not commit MEMORY.md.
+Set autoMemoryEnabled to false in the project .claude/settings.json, or export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1. Auto memory is on by default in a local Claude Code session.
+Do not add an @ import to CLAUDE.md. An import is expanded into the file, up to four hops, and costs the full text.
+This file does not install itself.

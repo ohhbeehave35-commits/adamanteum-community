@@ -1,0 +1,8 @@
+# Authority and existing code
+
+- Section 3 says `run(args)` receives every token after `authority`. The existing CLI destructures `[command,file,...args]`, so `file` holds the subcommand. The inserted branch passes `[file,...args]`, preserving the existing parser.
+- Section 4 describes one search result list. The existing query worker returns pages of at most 80 rows. The door reads those pages before filtering and applying the requested visible offset and limit; the human query implementation is unchanged.
+- Section 4 describes note writes as Markdown. The existing write path also accepts Canvas, JSON and Base files, with Canvas JSON validation. The stamp applies to Markdown notes, retaining the existing non-Markdown formats instead of prefixing them with Markdown frontmatter.
+- Follow-up authorization permits the startup and Windows fixes. The baseline server cached zero documents for the test's entire wait window. The server now invalidates cached counts when indexing finishes and rejects results from an older cache generation; the startup test remains unchanged.
+- Section 5 requires directory fsync. Windows rejects that operation. Under the follow-up authorization, apply fsyncs the archive file on every platform and its parent directory only on non-Windows platforms. Windows therefore has a file-content flush, without the POSIX directory-durability guarantee.
+- Section 9 requires a control character in an actual filename. Windows cannot create that fixture. Its test supplies the invalid directory entry through the filesystem mock and executes the real proposal handler; Linux still creates actual files. Both platforms test tab, newline and carriage return refusal without producing a sheet. No test is skipped.
