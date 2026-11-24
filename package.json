@@ -29,7 +29,7 @@
   "scripts": {
     "start": "node --max-old-space-size=3072 server.mjs",
     "graph": "node adamanteum-cli.mjs",
-    "test": "node --test --test-concurrency=2 tests/atlas-look.test.mjs tests/atlas-performance.test.mjs tests/cell.test.mjs tests/cli.test.mjs tests/code-extractor.test.mjs tests/flow.test.mjs tests/graph-export.test.mjs tests/graph-notes.test.mjs tests/graph-operations.test.mjs tests/graph-switches.test.mjs tests/layout-worker.test.mjs tests/lib.test.mjs tests/multilang.test.mjs tests/notebook.test.mjs tests/physics.test.mjs tests/project-navigation.test.mjs tests/python-resolution.test.mjs tests/query-pool.test.mjs tests/symbol-resolution.test.mjs tests/vault-indexer.test.mjs tests/community.test.mjs",
+    "test": "node --test --test-concurrency=2 tests/atlas-look.test.mjs tests/atlas-performance.test.mjs tests/cell.test.mjs tests/cli.test.mjs tests/code-extractor.test.mjs tests/flow.test.mjs tests/graph-export.test.mjs tests/graph-notes.test.mjs tests/graph-operations.test.mjs tests/graph-switches.test.mjs tests/layout-worker.test.mjs tests/lib.test.mjs tests/multilang.test.mjs tests/notebook.test.mjs tests/physics.test.mjs tests/project-navigation.test.mjs tests/python-resolution.test.mjs tests/query-pool.test.mjs tests/symbol-resolution.test.mjs tests/vault-indexer.test.mjs tests/community.test.mjs tests/authority.test.mjs",
     "test:core": "node verify/test-core.mjs"
   },
   "dependencies": {

@@ -88,11 +88,11 @@ db.prepare('INSERT OR REPLACE INTO meta VALUES (?,?)').run('vault', vault);
 const state = {phase:'starting', scanned:0, indexed:0, skipped:0, errors:0, links:0, started:new Date().toISOString(), source: path.basename(vault)};
 const count = () => Number(db.prepare('SELECT count(*) n FROM docs').get().n);
 // WRONGLOOK1: /api/status runs on every poll of the page and of every seat; two full scans of 96k notes each time kept this thread busy (16 s in 170 s). Kept ten seconds.
-const countMemo={at:0,n:0,cats:[]};
+const countMemo={at:0,n:0,cats:[],generation:0};
 // FIVE1: still 8 s of this thread in 70 s while a page loaded (the counts scan competes with the indexer). The first answer is computed here, every later refresh runs in a query worker and the last answer is served meanwhile.
 const statusCounts=()=>{
  if(!countMemo.at){countMemo.n=count();countMemo.cats=db.prepare('SELECT category,count(*) count FROM docs GROUP BY category').all();countMemo.at=Date.now();return countMemo;}
- if(Date.now()-countMemo.at>=10000&&!countMemo.pending){countMemo.pending=queryPool.run('counts',{}).then(({result})=>{countMemo.n=result.n;countMemo.cats=result.cats;countMemo.at=Date.now();}).catch(()=>{}).finally(()=>{countMemo.pending=null;});}
+ if(Date.now()-countMemo.at>=10000&&!countMemo.pending){const generation=countMemo.generation;countMemo.pending=queryPool.run('counts',{}).then(({result})=>{if(generation!==countMemo.generation)return;countMemo.n=result.n;countMemo.cats=result.cats;countMemo.at=Date.now();}).catch(()=>{}).finally(()=>{countMemo.pending=null;});}
  return countMemo;
 };
 const yieldLoop = () => new Promise(r=>setImmediate(r));
@@ -113,6 +113,7 @@ function refreshVault(){
   state.refresh=message;
   if(message.phase==='ready'){
    finished=true;Object.assign(state,message,{snapshot:false});
+   countMemo.generation++;countMemo.at=0;
    const receipt=JSON.stringify({...state,vault},null,2);
    fsp.writeFile(path.join(dataRoot,'index-receipt.json.next'),receipt).then(()=>fsp.rename(path.join(dataRoot,'index-receipt.json.next'),path.join(dataRoot,'index-receipt.json'))).catch(e=>{state.receiptError=e.message;});
    // owner 30 Oct 16:43 (the orbit around the centre was gone after a restart): the whole map built before the first full read had no notes in it; rebuild it the moment the vault is read.
