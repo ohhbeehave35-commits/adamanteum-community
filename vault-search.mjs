@@ -7,8 +7,10 @@ export function searchPlan(query) {
     if (token === 'OR') { groups.push({ terms: [], filters: [] }); continue; }
     const current = groups[groups.length - 1];
     const negative = token.startsWith('-'), value = negative ? token.slice(1) : token, pair = /^([\w-]+):(.*)$/.exec(value), unquote = s => s.replace(/^"|"$/g, '');
-    if (pair) current.filters.push({ key: pair[1], value: unquote(pair[2]).replace(/^#/, pair[1] === 'tag' ? '' : '#'), negative });
-    else current.terms.push({ value: unquote(value), negative, phrase: value.startsWith('"') });
+    if (pair) {
+      const raw = unquote(pair[2]).replace(/^#/, pair[1] === 'tag' ? '' : '#');
+      if (raw !== '') current.filters.push({ key: pair[1], value: raw, negative });
+    } else if (value !== '') current.terms.push({ value: unquote(value), negative, phrase: value.startsWith('"') });
   }
   const first = groups[0];
   return { terms: first.terms, filters: first.filters, groups: groups.filter(g => g.terms.length || g.filters.length) };
